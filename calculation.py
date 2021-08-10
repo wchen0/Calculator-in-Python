@@ -39,13 +39,6 @@ def is_float(string):
 
 
 def string_to_list(string):
-	dot_cnt = 0
-	for i in string:
-		if i == '.':
-			dot_cnt += 1
-	if dot_cnt > 1:
-		return None
-
 	_list = []
 	idx = 0
 	while idx < len(string):
@@ -162,14 +155,17 @@ def get_answer(_list):
 
 
 def calculation(string):
-	if string.strip() == "" or string.strip() == '.':
-		return None
-	string = ('(' + string + ')').replace(" ","").replace("(-","(0-").strip()
-	inffix_expression = string_to_list(string)
-	#print(inffix_expression)
-	suffix_expression = list_to_suffix_expr(inffix_expression)
-	#print(suffix_expression)
-	return get_answer(suffix_expression)
+	try:
+	    	if string.strip() == "" or string.strip() == '.':
+		    	return None
+	    	string = ('(' + string + ')').replace(" ","").replace("(-","(0-").strip()
+	    	inffix_expression = string_to_list(string)
+	    	#print(inffix_expression)
+	    	suffix_expression = list_to_suffix_expr(inffix_expression)
+	    	#print(suffix_expression)
+	    	return get_answer(suffix_expression)
+	except:
+	    	return None
 
 
 
